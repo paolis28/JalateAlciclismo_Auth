@@ -1,18 +1,15 @@
-# Imagen base de Python
 FROM python:3.11-slim
 
-# Crear directorio de la app
+# Instalar dependencias necesarias para compilar bcrypt
+RUN apt-get update && apt-get install -y gcc libffi-dev musl-dev
+
 WORKDIR /app
 
-# Copiar dependencias e instalarlas
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el código
 COPY . /app
 
-# Exponer el puerto 8000+
 EXPOSE 8000
 
-# Comando para ejecutar FastAPI
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
