@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar el código
-COPY ./app /app
+COPY . /app
 
 # Exponer el puerto 8000+
 EXPOSE 8000
