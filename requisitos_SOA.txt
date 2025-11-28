@@ -1,0 +1,20 @@
+1.-Api Gatewey (AWS o Nginx)
+2.-Balanceador de carga (Nginx)
+3.-Comunicación entre microservicios (Rest o MEnsajería(eventos))
+4.-Base de datos: compartida o cada servicio con una base de datos propia
+    4.1 Nota: Nuestros servicios no se pueden conectar a los modelos
+            o colecciones de otros microservicios
+
+
+5.- Arquitectura Hexagonal:
+    -Patrones: *Repository *Inyección de dependencias
+    -Contratos bien definidos
+    -Respetando las capas de la Arquitectura
+    -Recursos y versiones bien definidos
+    -Verbos Http bien definidos
+    -Incluir Query params bien definidos (paginación, ordenamientos, busquedas y filtros)
+
+
+ 
+-Hacer las peticiones HTTP(request)
+-Cada micro si debe lelvar su propia base

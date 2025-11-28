@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar el código
 COPY ./app /app
 
-# Exponer el puerto 8000
+# Exponer el puerto 8000+
 EXPOSE 8000
 
 # Comando para ejecutar FastAPI
