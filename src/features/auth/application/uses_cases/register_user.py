@@ -20,19 +20,6 @@ class RegisterUserUseCase:
         self.user_repo = user_repository
 
     def execute(self, user_data: User, file=None):
-        """
-        Ejecuta el registro de un nuevo usuario.
-        
-        Args:
-            user_data: Datos del usuario a registrar
-            file: Archivo de imagen opcional para el perfil del usuario
-            
-        Returns:
-            User: Usuario registrado
-            
-        Raises:
-            Exception: Si el correo ya está registrado o hay un error
-        """
         url_foto = None
 
         # Subir imagen correctamente si existe
