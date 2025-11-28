@@ -8,19 +8,16 @@ app = FastAPI()
 
 #Para producción:
 #Cuando vayas a producción, cambia los orígenes permitidos por el dominio real de tu frontend:
-    #allow_origins=[
+    # allow_origins=[
     #    "https://tudominio.com",
     #    "https://www.tudominio.com",
-    #],
+    # ],
 
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:5173",  
-        "http://127.0.0.1:5173",
+        "*"
     ],
     allow_credentials=True,
     allow_methods=["*"],  # Permite todos los métodos (GET, POST, PUT, DELETE, etc.)
