@@ -12,7 +12,7 @@ class UserRepository(UserRepositoryPort):
         with engine.connect() as conn:
             query = text("""
                 INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, correo, contrasena, url_foto)
-                VALUES (:nombre, :apellido_paterno, :apellido_materno, :correo, :contrasena, :url_foto)
+                VALUES (:nombre, :apellido_paterno, :apellido_materno, :correo, :hashed_password, :url_foto)
             """)
             conn.execute(query, {
                 "nombre": user.nombre,
@@ -27,6 +27,6 @@ class UserRepository(UserRepositoryPort):
 
     def get_user_by_email(self, correo: str):
         with engine.connect() as conn:
-            query = text("SELECT * FROM usuario WHERE correo = :email")
+            query = text("SELECT * FROM usuario WHERE correo = :correo")
             result = conn.execute(query, {"email": correo}).first()
             return dict(result._mapping) if result else None
