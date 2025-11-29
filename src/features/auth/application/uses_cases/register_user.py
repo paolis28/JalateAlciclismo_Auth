@@ -20,7 +20,6 @@ class RegisterUserUseCase:
         self.user_repo = user_repository
 
     def execute(self, user_data: User, url_foto=None):
-        url_foto = None
 
         # Subir imagen correctamente si existe
         if url_foto:
