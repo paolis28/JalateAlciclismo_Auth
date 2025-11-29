@@ -8,6 +8,7 @@ from passlib.hash import bcrypt
 class UserRepository(UserRepositoryPort):
     def create_user(self, user: User) -> User:
         hashed_password = bcrypt.hash(user.contrasena)
+        print("Hashed password:", hashed_password)
         with engine.connect() as conn:
             query = text("""
                 INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, correo, contrasena, url_foto)
