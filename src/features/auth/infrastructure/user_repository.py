@@ -28,5 +28,5 @@ class UserRepository(UserRepositoryPort):
     def get_user_by_email(self, correo: str):
         with engine.connect() as conn:
             query = text("SELECT * FROM usuario WHERE correo = :correo")
-            result = conn.execute(query, {"email": correo}).first()
+            result = conn.execute(query, {"correo": correo}).first()
             return dict(result._mapping) if result else None
