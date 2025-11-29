@@ -8,5 +8,5 @@ class UserRepositoryPort(ABC):
         pass
 
     @abstractmethod
-    def get_user_by_email(self, email: str) -> Optional[User]:
+    def get_user_by_email(self, correo: str) -> Optional[User]:
         pass

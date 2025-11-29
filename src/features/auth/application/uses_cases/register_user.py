@@ -3,11 +3,11 @@ import cloudinary.uploader
 from src.features.auth.domain.entities.user import User
 from src.features.auth.domain.ports.Iuser_repository import UserRepositoryPort
 
-cloudinary.config(
-    cloud_name="dfuajei2k",
-    api_key="782294236213671",
-    api_secret="_Qd4Z_FD3Z_Lb897PAGptEP7Eds"
-)
+# cloudinary.config(
+#     cloud_name="dfuajei2k",
+#     api_key="782294236213671",
+#     api_secret="_Qd4Z_FD3Z_Lb897PAGptEP7Eds"
+# )
 
 class RegisterUserUseCase:
     def __init__(self, user_repository: UserRepositoryPort):
@@ -25,14 +25,15 @@ class RegisterUserUseCase:
         # Subir imagen correctamente si existe
         if file:
             try:
-                upload_result = cloudinary.uploader.upload(
-                    file.file,                # se pasa el archivo como stream
-                    folder="usuarios",
-                    public_id=user_data.correo.split("@")[0],  # opcional
-                    overwrite=True,
-                    resource_type="image"
-                )
-                url_foto = upload_result.get("secure_url")
+                print("Subiendo imagen a Cloudinary...")
+                # upload_result = cloudinary.uploader.upload(
+                #     file.file,                # se pasa el archivo como stream
+                #     folder="usuarios",
+                #     public_id=user_data.correo.split("@")[0],  # opcional
+                #     overwrite=True,
+                #     resource_type="image"
+                # )
+                # url_foto = upload_result.get("secure_url")
             except Exception as e:
                 print("Error al subir imagen a Cloudinary:", e)
                 url_foto = None

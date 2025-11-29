@@ -11,8 +11,8 @@ class UserRepository(UserRepositoryPort):
         print("Hashed password:", hashed_password)
         with engine.connect() as conn:
             query = text("""
-                INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, correo, contrasena, url_foto)
-                VALUES (:nombre, :apellido_paterno, :apellido_materno, :correo, :hashed_password, :url_foto)
+                INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, contrasena, correo, url_foto)
+                VALUES (:nombre, :apellido_paterno, :apellido_materno, :hashed_password, :correo, :url_foto)
             """)
             conn.execute(query, {
                 "nombre": user.nombre,
