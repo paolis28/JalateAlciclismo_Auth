@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from jose import jwt
-from passlib.hash import bcrypt
+import bcrypt
 from src.features.auth.domain.ports.Iuser_repository import UserRepositoryPort
 import os
 from dotenv import load_dotenv

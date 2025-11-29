@@ -3,11 +3,11 @@ from sqlalchemy import text
 from src.features.auth.domain.entities.user import User
 from src.features.auth.domain.ports.Iuser_repository import UserRepositoryPort
 from src.features.db.db_config import engine
-from passlib.hash import bcrypt
+import bcrypt
 
 class UserRepository(UserRepositoryPort):
     def create_user(self, user: User) -> User:
-        hashed_password = bcrypt.hash(user.contrasena)
+        hashed_password = bcrypt.hashpw(user.contrasena.encode('utf-8'), bcrypt.gensalt())
         print("Hashed password:", hashed_password)
         with engine.connect() as conn:
             query = text("""
