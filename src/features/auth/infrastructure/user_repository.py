@@ -7,7 +7,7 @@ import bcrypt
 
 class UserRepository(UserRepositoryPort):
     def create_user(self, user: User) -> User:
-        hashed_password = bcrypt.hashpw(user.contrasena.encode('utf-8'), bcrypt.gensalt())
+        hashed_password = bcrypt.hashpw(user.contrasena.encode('utf-8'), bcrypt.gensalt()).decode("utf-8")
         print("Hashed password:", hashed_password)
         with engine.connect() as conn:
             query = text("""
