@@ -17,7 +17,7 @@ class AuthenticateUserUseCase:
 
     def execute(self, correo: str, contrasena: str):
         user = self.user_repo.get_user_by_email(correo)
-        if not user or not bcrypt.verify(contrasena, user["contrasena"]):
+        if not user or not bcrypt.checkpw(contrasena.encode('utf-8'), user["contrasena"].encode('utf-8')):
             raise Exception("Credenciales incorrectas")
 
         token_data = {
