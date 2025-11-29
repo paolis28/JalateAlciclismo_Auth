@@ -12,7 +12,7 @@ class UserRepository(UserRepositoryPort):
         with engine.connect() as conn:
             query = text("""
                 INSERT INTO usuario (nombre, apellido_paterno, apellido_materno, contrasena, correo, url_foto)
-                VALUES (:nombre, :apellido_paterno, :apellido_materno, :hashed_password, :correo, :url_foto)
+                VALUES (:nombre, :apellido_paterno, :apellido_materno, :contrasena, :correo, :url_foto)
             """)
             conn.execute(query, {
                 "nombre": user.nombre,
