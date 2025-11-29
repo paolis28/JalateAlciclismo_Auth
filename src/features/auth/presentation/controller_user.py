@@ -15,20 +15,21 @@ async def register_user(
     nombre: str = Form(...),
     apellido_paterno: str = Form(None),
     apellido_materno: str = Form(None),
-    correo: str = Form(...),
     contrasena: str = Form(...),
-    file: UploadFile = None,
+    correo: str = Form(...),
+    url_foto: str = Form(...),
     use_case: RegisterUserUseCase = Depends(get_register_user_use_case_dependency)
 ):
     user = User(
         nombre=nombre,
         apellido_paterno=apellido_paterno,
         apellido_materno=apellido_materno,
+        contrasena=contrasena,
         correo=correo,
-        contrasena=contrasena
+        url_foto=url_foto
     )
 
-    result = use_case.execute(user, file)
+    result = use_case.execute(user, url_foto)
     return {"message": "Usuario registrado correctamente", "data": result}
 
 

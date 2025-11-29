@@ -19,11 +19,11 @@ class RegisterUserUseCase:
         """
         self.user_repo = user_repository
 
-    def execute(self, user_data: User, file=None):
+    def execute(self, user_data: User, url_foto=None):
         url_foto = None
 
         # Subir imagen correctamente si existe
-        if file:
+        if url_foto:
             try:
                 print("Subiendo imagen a Cloudinary...")
                 # upload_result = cloudinary.uploader.upload(
